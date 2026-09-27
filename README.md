@@ -113,15 +113,30 @@ docs/
 ```
 
 ---
+## Credits / related (this work stands on theirs)
 
-## Credits / related
+This project is built directly on the groundwork of three excellent
+repositories — please credit/star them:
 
-- **ipcd** — the fuller open camera app this complements:
+- **TECKIN-TC100 / Anyka AK3918 camera hacks** — ThatUsernameAlreadyExist:
+  the `wifitest` SD boot-hook method (root shell without flashing, fully
+  reversible). This is what makes everything here safe to try.
+  <https://github.com/ThatUsernameAlreadyExist/TECKIN-TC100-Anyka-AK3918-camera-hacks>
+- **GNCC GC2 ak3918ev300 RTSP** — piotr-go: the `usbnet` / password approach
+  and RTSP groundwork on the very close GC2 (ak3918ev300).
+  <https://github.com/piotr-go/GNCC_GC2_ak3918ev300_RTSP>
+- **Anyka Camera Firmware** — MuhammedKalkan: the `ak_rtsp_demo` this build's
+  demo is inspired by / derived from.
+  <https://github.com/MuhammedKalkan/Anyka-Camera-Firmware>
+
+Also related:
+- **ipcd** — the fuller open camera app (ONVIF/PTZ):
   <https://github.com/medevil84/ipcd>
-- **AK3918 hacking journey** / TECKIN AK3918 hacks — the `wifitest` SD hook
-  and cross-compile groundwork.
-- The vendor **`ak_rtsp_demo`** + Anyka SDK headers/libs are the vendor's;
-  extract from your own device, don't redistribute.
+
+The vendor **`ak_rtsp_demo`** sources, Anyka SDK libs/headers, stock firmware
+and sensor configs are the vendor's — extract from your own device, do not
+redistribute.
+
 
 ## License
 
