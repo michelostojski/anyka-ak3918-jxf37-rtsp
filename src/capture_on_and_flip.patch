@@ -1,0 +1,38 @@
+Three edits to the vendor ak_rtsp_demo.c (context form, base is vendor's).
+
+--- In the VI init fn, AFTER ak_vi_open()/ak_vi_get_sensor_resolution(),
+    BEFORE returning the handle:
+
+    ak_print_notice_ex("start capture ...\n");
+
++   /* channel attr FIRST — allocates pdev->chn_main/chn_sub that
++    * ak_vi_capture_on() dereferences (else NULL-deref segfault). */
++   {
++       struct video_channel_attr attr;
++       memset(&attr, 0, sizeof(attr));
++       attr.crop.left = 0; attr.crop.top = 0;
++       attr.crop.width  = resolution.width;
++       attr.crop.height = resolution.height;
++       attr.res[VIDEO_CHN_MAIN].width  = 1280;
++       attr.res[VIDEO_CHN_MAIN].height = 720;
++       attr.res[VIDEO_CHN_MAIN].max_width  = resolution.width;
++       attr.res[VIDEO_CHN_MAIN].max_height = resolution.height;
++       attr.res[VIDEO_CHN_SUB].width  = 640;
++       attr.res[VIDEO_CHN_SUB].height = 480;
++       attr.res[VIDEO_CHN_SUB].max_width  = 640;
++       attr.res[VIDEO_CHN_SUB].max_height = 480;
++       if (ak_vi_set_channel_attr(handle, &attr))
++           ak_print_error_ex("ak_vi_set_channel_attr failed\n");
++   }
++   if (ak_vi_capture_on(handle))
++       ak_print_error_ex("ak_vi_capture_on failed\n");
+
+    return handle;
+
+--- In main(), AFTER vi init is validated ("vi init ok"), flip on the READY
+    handle (mid-init crashes):
+
+    ak_print_notice("vi init ok\n");
++   ak_vi_set_flip_mirror(vi_handle, 1, 1);   /* 180; (1,0)/(0,1) variants */
+
+Ensure <string.h> is included (memset).

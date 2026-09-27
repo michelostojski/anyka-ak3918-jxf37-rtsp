@@ -1,0 +1,12 @@
+MIT License — docs and glue scripts/patch in this repo only.
+
+Copyright (c) 2026 <Michel Ostojski>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction... [standard MIT text] ...THE SOFTWARE IS
+PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+NOT COVERED: the vendor ak_rtsp_demo sources, Anyka SDK shared libraries,
+stock firmware, and sensor configs. Obtain those from your own device; do not
+redistribute them.
